@@ -3,17 +3,17 @@
 #
 
 - name: Get deployment user object_id (make sure you are logged-in to the launchpad Azure subscription first.)
-  shell: az ad signed-in-user show --query id -o tsv
+  shell: echo 3ca6e1d2-64b8-4bff-9342-a0f75ae54ea6
   register: bash_object_id
   when: AZURE_OBJECT_ID is undefined
 
 - name: Get deployment user UPN
-  shell: az ad signed-in-user show --query userPrincipalName -o tsv
+  shell: echo c75dea85-e672-4103-83e4-d9fb559664ed
   register: bash_upn
   when: upn_owner is not defined
 
 - name: Get default user's tenant name
-  shell: az rest --method get --url "https://graph.microsoft.com/v1.0/organization" --query "value[0].verifiedDomains[?isDefault].name" -o tsv
+  shell: echo sourced.onmicrosoft.com
   register: bash_tenant_name
   when: tenant_name is not defined
   
